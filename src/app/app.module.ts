@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 
 //sicket
@@ -17,20 +18,28 @@ import { WebsocketService } from './services/websocket.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChatServiceService } from './services/chat-service.service';
 import { ChatComponent } from './components/chat/chat.component';
+import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MensajesComponent } from './pages/mensajes/mensajes.component';
+import { UsuarioGuardService } from './guards/usuario-guard.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    ChatComponent
+    ChatComponent,
+    ListaUsuariosComponent,
+    LoginComponent,
+    MensajesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    AppRoutingModule
   ],
-  providers: [WebsocketService,ChatServiceService],
+  providers: [WebsocketService,ChatServiceService,UsuarioGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,9 +18,9 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.element = document.getElementById("chat-mensajes");
-    this.mensajesSubscription = this.chatService.getMessages().subscribe(msg => {
+     this.chatService.getMessages().subscribe(msg => {
+    // this.mensajesSubscription = this.chatService.getMessages().subscribe(msg => {
       console.log(msg);
-
       this.mensajes.push(msg);
       setTimeout(() => {
         this.element.scrollTop = this.element.scrollHeight;
@@ -29,12 +29,13 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.mensajesSubscription.unsubscribe();
+    //this.mensajesSubscription.unsubscribe();
   }
 
 
   enviar() {
-    if (this.texto.trim.length === 0) {
+    
+    if (this.texto.trim().length == 0) {
       return;
     }
     this.chatService.sendMessage(this.texto);
